@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"app-name":"inbox-receivemsg-process", "category":"framework"}</customFields>
+            <fieldNames>
+                <timestamp>time</timestamp>
+                <version>[ignore]</version>
+            </fieldNames>
+        </encoder>
+        <springProfile name="dev">
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} | %5p | %logger{25} | %m%n</pattern>
+                <charset>utf8</charset>
+            </encoder>
+        </springProfile>
+    </appender>
+    <appender name="APPLICATION" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"app-name":"inbox-receivemsg-process", "category":"application"}</customFields>
+            <fieldNames>
+                <timestamp>time</timestamp>
+                <version>[ignore]</version>
+            </fieldNames>
+        </encoder>
+        <springProfile name="dev">
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} | %5p | %logger{25} | %m%n</pattern>
+                <charset>utf8</charset>
+            </encoder>
+        </springProfile>
+    </appender>
+
+    <logger name="om.krungthai.paotangs.lab.inbox.inboxreceivemsgprocess" level="INFO" additivity="false">
+        <appender-ref ref="APPLICATION"/>
+    </logger>
+    
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

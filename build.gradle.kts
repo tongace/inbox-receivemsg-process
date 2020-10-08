@@ -15,6 +15,15 @@ repositories {
 	mavenCentral()
 }
 
+object Versions {
+	const val springCloud = "Hoxton.RELEASE"
+	const val r2dbc = "Arabba-SR5"
+	const val springDataR2dbc = "1.1.1.RELEASE"
+	const val logback = "6.4"
+	const val springMockK = "2.0.0"
+	const val bouncyCastle = "1.64"
+}
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 	implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
@@ -23,12 +32,14 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-	runtimeOnly("com.h2database:h2")
-	runtimeOnly("io.r2dbc:r2dbc-h2")
+	implementation("com.h2database:h2")
+	implementation("io.r2dbc:r2dbc-h2")
+	implementation("io.r2dbc:r2dbc-pool")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
 	testImplementation("io.projectreactor:reactor-test")
+	implementation("net.logstash.logback:logstash-logback-encoder:${Versions.logback}")
 }
 
 tasks.withType<Test> {
