@@ -22,11 +22,14 @@ object Versions {
 	const val logback = "6.4"
 	const val springMockK = "2.0.0"
 	const val bouncyCastle = "1.64"
+	const val mockkVersion = "1.10.0"
 }
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 	implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.apache.kafka:kafka-streams")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -39,6 +42,7 @@ dependencies {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
 	testImplementation("io.projectreactor:reactor-test")
+	testImplementation("io.mockk:mockk:${Versions.mockkVersion}")
 	implementation("net.logstash.logback:logstash-logback-encoder:${Versions.logback}")
 }
 
