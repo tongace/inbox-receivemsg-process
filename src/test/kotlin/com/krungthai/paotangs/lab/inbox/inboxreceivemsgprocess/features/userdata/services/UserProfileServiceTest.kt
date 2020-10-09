@@ -17,6 +17,12 @@ internal class UserProfileServiceTest(
     fun `test find user by mobile no 0812345678`()= runBlocking{
         val returnUserData = userProfileRepository.findByConsumerMobileNumber("0812345678")
         assertNotNull(returnUserData)
+        assertEquals("Other",returnUserData?.consumerNameEn)
+    }
+    @Test
+    fun `test find user by mobile no 0922755678`()= runBlocking{
+        val returnUserData = userProfileRepository.findByConsumerMobileNumber("0922755678")
+        assertNotNull(returnUserData)
         assertEquals("Chairat",returnUserData?.consumerNameEn)
     }
 }
