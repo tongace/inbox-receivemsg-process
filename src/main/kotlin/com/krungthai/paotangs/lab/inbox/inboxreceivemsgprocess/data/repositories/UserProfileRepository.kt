@@ -3,6 +3,7 @@ package com.krungthai.paotangs.lab.inbox.inboxreceivemsgprocess.data.repositorie
 import com.krungthai.paotangs.lab.inbox.inboxreceivemsgprocess.data.entities.UserProfile
 import org.springframework.data.r2dbc.core.DatabaseClient
 import org.springframework.data.r2dbc.core.awaitFirstOrNull
+import org.springframework.data.r2dbc.core.awaitOne
 import org.springframework.data.r2dbc.core.from
 import org.springframework.data.relational.core.query.Criteria
 import org.springframework.stereotype.Repository
@@ -17,5 +18,5 @@ class UserProfileRepository(
             .matching(
                 Criteria.where(UserProfile::consumerMobile.name).`is`(mobile)
             ).fetch()
-            .awaitFirstOrNull()
+            .awaitOne()
 }

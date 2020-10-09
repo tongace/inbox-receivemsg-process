@@ -3,6 +3,7 @@ package com.krungthai.paotangs.lab.inbox.inboxreceivemsgprocess.features.userdat
 import com.krungthai.paotangs.lab.inbox.inboxreceivemsgprocess.data.repositories.UserProfileRepository
 import com.krungthai.paotangs.lab.inbox.inboxreceivemsgprocess.utils.getLogger
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserProfileService(
