@@ -44,6 +44,7 @@ dependencies {
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("io.mockk:mockk:${Versions.mockkVersion}")
 	implementation("net.logstash.logback:logstash-logback-encoder:${Versions.logback}")
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 tasks.withType<Test> {

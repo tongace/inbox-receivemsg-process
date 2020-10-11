@@ -13,8 +13,8 @@ class RetrieveRouter {
     @Bean
     fun retrieveUserProfileRoutes(retrieveHandler: RetrieveHandler) = coRouter {
         accept(MediaType.APPLICATION_JSON).nest {
-            POST("/retrieveUserWithMobile", retrieveHandler::retrieveUserProfileByMobileNoByPost)
-            GET("/retrieveUserWithMobile/{mobileNo}",retrieveHandler::retrieveUserProfileByMobileNoByGet)
+            POST("/user/profile/", retrieveHandler::retrieveUserProfileByMobileNoByPost)
+            GET("/user/profile/{mobileNo}",retrieveHandler::retrieveUserProfileByMobileNoByGet)
         }
 
     }
