@@ -8,6 +8,9 @@ import com.krungthai.paotangs.lab.inbox.inboxreceivemsgprocess.dto.ResponseStatu
 import com.krungthai.paotangs.lab.inbox.inboxreceivemsgprocess.dto.TransferResponse
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.http.MediaType
+import org.springframework.messaging.MessageHeaders
+import org.springframework.messaging.support.MessageBuilder
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.bodyValueAndAwait
 import org.springframework.web.reactive.function.server.json
@@ -110,3 +113,20 @@ suspend inline fun responseSuccess(response: Any) =
         .ok()
         .json()
         .bodyValueAndAwait(response)
+
+fun <T : Any> T.toMessagePayload() = this.let {
+    MessageBuilder
+        .createMessage(
+            it,
+            MessageHeaders(
+                Collections.singletonMap<String, Any>(
+                    MessageHeaders.CONTENT_TYPE,
+                    MediaType.APPLICATION_JSON_VALUE
+                )
+            )
+        )
+}
+
+data class PaotangSystemException(var statusDesc: String) : RuntimeException()
+
+data class KafkaRetryAbleException(var statusDesc: String) : RuntimeException()

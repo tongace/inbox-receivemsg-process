@@ -21,12 +21,36 @@ spring.cloud.stream:
             request.timeout.ms: 15000
             retry.backoff.ms: 250
             retries: 20
+      InboxReceiveMessageTransFormConsume:
+        consumer:
+          autoCommitOffset: true
+          autoCommitOnError: false
+          configuration:
+            max.poll.records: 1
+            max.poll.interval.ms: 60000
+      InboxReceiveMessageTransformProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
   bindings:
     InboxReceiveMessageConsume:
       destination: test
-      group: ekyc.registration.process
+      group: test.topic.group
       binder: batchKafka
     InboxReceiveMessageProduce:
       destination: test
-      group: ekyc.registration.process
+      group: test.topic.group
+      binder: batchKafka
+    InboxReceiveMessageTransFormConsume:
+      destination: test2
+      group: test.topic.group
+      binder: batchKafka
+    InboxReceiveMessageTransformProduce:
+      destination: test2
+      group: test.topic.group
       binder: batchKafka

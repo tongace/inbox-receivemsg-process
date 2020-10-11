@@ -21,6 +21,6 @@ class RetrieveHandler(
     suspend fun retrieveUserProfileByMobileNoByGet(request: ServerRequest)=
         request.pathVariable("mobileNo").let{
             transferResponseSuccess(
-                userProfileService.findUserByMobileNo(it)
+                userProfileService.findUserData(it)
             )}
 }

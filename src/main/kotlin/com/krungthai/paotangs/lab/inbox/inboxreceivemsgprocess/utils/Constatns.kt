@@ -24,4 +24,6 @@ object Constants {
 object KafkaDestinations {
     const val CONSUME_TEST = "InboxReceiveMessageConsume"
     const val PRODUCE_TEST = "InboxReceiveMessageProduce"
+    const val CONSUME_TEST2 = "InboxReceiveMessageTransFormConsume"
+    const val PRODUCE_TEST2 = "InboxReceiveMessageTransformProduce"
 }
