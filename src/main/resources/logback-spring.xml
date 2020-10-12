@@ -31,7 +31,7 @@
         </springProfile>
     </appender>
 
-    <logger name="om.krungthai.paotangs.lab.inbox.inboxreceivemsgprocess" level="INFO" additivity="false">
+    <logger name="com.example.lab.inbox.inboxreceivemsgprocess" level="INFO" additivity="false">
         <appender-ref ref="APPLICATION"/>
     </logger>
     
