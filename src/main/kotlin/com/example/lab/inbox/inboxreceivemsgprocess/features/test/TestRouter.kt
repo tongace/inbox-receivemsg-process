@@ -13,6 +13,7 @@ class TestRouter {
             GET("/test",testHandler::test)
             GET("/find/{identifier}",testHandler::findAll)
             GET("/update/{identifier}/{mobileNo}",testHandler::update)
+            POST("/matching",testHandler::createMatching)
         }
     }
 }

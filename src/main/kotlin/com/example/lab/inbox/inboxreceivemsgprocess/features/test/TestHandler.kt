@@ -1,15 +1,21 @@
 package com.example.lab.inbox.inboxreceivemsgprocess.features.test
 
+import com.example.lab.inbox.inboxreceivemsgprocess.dto.TransferRequest
+import com.example.lab.inbox.inboxreceivemsgprocess.features.test.services.POCService
 import com.example.lab.inbox.inboxreceivemsgprocess.features.test.services.TestService
+import com.example.lab.inbox.inboxreceivemsgprocess.features.userdata.models.MatchingRegisterNewModel
+import com.example.lab.inbox.inboxreceivemsgprocess.features.userdata.models.UserModel
 import com.example.lab.inbox.inboxreceivemsgprocess.utils.getLogger
 import com.example.lab.inbox.inboxreceivemsgprocess.utils.transferResponseSuccess
 import kotlinx.coroutines.coroutineScope
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest
+import org.springframework.web.reactive.function.server.awaitBody
 
 @Component
 class TestHandler(
-    private val service: TestService
+    private val service: TestService,
+    private val pocService: POCService
 ) {
     private companion object {
         private val log = getLogger<TestHandler>()
@@ -31,4 +37,8 @@ class TestHandler(
                 request.pathVariable("identifier"),request.pathVariable("mobileNo"))
         )
     }
+    suspend fun createMatching(request: ServerRequest) =
+        transferResponseSuccess(
+            pocService.process(request.awaitBody<TransferRequest<MatchingRegisterNewModel>>().content)
+        )
 }
