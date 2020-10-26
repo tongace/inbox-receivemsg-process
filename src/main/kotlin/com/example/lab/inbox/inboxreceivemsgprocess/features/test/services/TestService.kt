@@ -21,29 +21,17 @@ class TestService(
     }
 
     private suspend fun testPrint1(requestUID: Int) {
-        coroutineScope {
-            for (ii in 0..10) {
-                delay(200)
-                println("print in testPrint1 of $requestUID >>>>  $ii")
-            }
+        for (ii in 0..10) {
+            delay(200)
+            println("print in testPrint1 of $requestUID >>>>  $ii")
         }
-//        for (ii in 0..10) {
-//            delay(200)
-//            println("print in testPrint1 of $requestUID >>>>  $ii")
-//        }
     }
 
     private suspend fun testPrint2(requestUID: Int) {
-        coroutineScope {
-            for (ii in 0..10) {
-                delay(300)
-                println("print in testPrint2 of $requestUID >>>>  $ii")
-            }
+        for (ii in 0..10) {
+            delay(300)
+            println("print in testPrint2 of $requestUID >>>>  $ii")
         }
-//        for (ii in 0..10) {
-//            delay(300)
-//            println("print in testPrint2 of $requestUID >>>>  $ii")
-//        }
     }
 
     suspend fun findAllUserProfile(identifier: String) =
@@ -55,9 +43,6 @@ class TestService(
     suspend fun updateUserProfileMobileNumberWithIdentifier(identifier: String, mobileNo: String) =
         transactionalOperator.executeAndAwait {
             userProfileRepository.findByConsumerIdentifier(identifier)?.let {
-//                userProfileRepository.insertUserProfile(
-//                    it.transformForUpdate(mobileNo)
-//                )
                 userProfileRepository.updateUserProfile(
                     it.transformForUpdate(mobileNo)
                 )
@@ -65,8 +50,8 @@ class TestService(
         }
 
 
-    private suspend fun UserProfile.transformForUpdate(mobileNo: String) = apply {
-        this.consumerMobile = mobileNo
-        this.updateDate= LocalDateTime.now()
-    }
+    private suspend fun UserProfile.transformForUpdate(mobileNo: String) = copy (
+        consumerMobile = mobileNo,
+        updateDate= LocalDateTime.now()
+    )
 }
