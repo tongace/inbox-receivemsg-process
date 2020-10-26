@@ -10,7 +10,9 @@ class TestRouter {
     @Bean
     fun test(testHandler: TestHandler) = coRouter {
         accept(MediaType.APPLICATION_JSON).nest {
-            GET("/test/{identifier}",testHandler::test)
+            GET("/test",testHandler::test)
+            GET("/find/{identifier}",testHandler::findAll)
+            GET("/update/{identifier}/{mobileNo}",testHandler::update)
         }
     }
 }

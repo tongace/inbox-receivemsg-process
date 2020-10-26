@@ -6,7 +6,6 @@ import com.example.lab.inbox.inboxreceivemsgprocess.data.repositories.UserProfil
 import com.example.lab.inbox.inboxreceivemsgprocess.features.userdata.models.UserModel
 import com.example.lab.inbox.inboxreceivemsgprocess.utils.getLogger
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserProfileService(
@@ -16,16 +15,16 @@ class UserProfileService(
     private companion object {
         private val log = getLogger<UserProfileService>()
     }
-    suspend fun findUserByMobileNo(mobileNo: String) =
+    suspend fun findUserByMobileNo(mobileNo: String)=
         userProfileRepository.findByConsumerMobileNumber(mobileNo)
-    suspend fun sendUserToOthersSystem(userModel: UserModel):Boolean=
-        sendUserToOthersRepo.userProfileProducer(userModel)
 
-    suspend fun findUserData(mobileNo: String):UserProfile{
+    suspend fun findUserData(mobileNo: String):UserProfile?{
         val userProfile =userProfileRepository.findByConsumerMobileNumber(mobileNo)
-        val userModel= UserModel(userProfile.consumerMobile,userProfile.consumerNameEn)
-        log.info("send user model >>>> $userModel")
-        sendUserToOthersRepo.userProfileProducer(userModel)
+        userProfile?.let {
+            val userModel = UserModel(it.consumerMobile, it.consumerNameEn)
+            log.info("send user model >>>> $userModel")
+            sendUserToOthersRepo.userProfileProducer(userModel)
+        }
         return userProfile
     }
 }

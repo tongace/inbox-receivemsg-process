@@ -48,6 +48,7 @@ dependencies {
 	implementation("com.h2database:h2")
 	implementation("io.r2dbc:r2dbc-h2")
 	implementation("io.r2dbc:r2dbc-pool")
+	implementation("io.r2dbc:r2dbc-mssql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}

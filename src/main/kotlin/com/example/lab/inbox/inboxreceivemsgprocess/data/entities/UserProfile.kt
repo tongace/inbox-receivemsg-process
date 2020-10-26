@@ -13,7 +13,7 @@ data class UserProfile(
     var consumerNameTh: String?,
     var consumerNameEn: String? = null,
     var consumerMobile: String,
-    var identifier: String?,
+    var identifier: String,
     var identifierType: String?,
     var customerHashId: String,
     var status: String,

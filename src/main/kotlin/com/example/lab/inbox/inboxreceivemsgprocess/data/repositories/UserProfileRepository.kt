@@ -1,13 +1,10 @@
 package com.example.lab.inbox.inboxreceivemsgprocess.data.repositories
 
 import com.example.lab.inbox.inboxreceivemsgprocess.data.entities.UserProfile
-import kotlinx.coroutines.reactive.awaitFirstOrNull
-import kotlinx.coroutines.reactive.awaitLast
 import org.springframework.data.domain.Sort
 import org.springframework.data.r2dbc.core.*
 import org.springframework.data.relational.core.query.Criteria
 import org.springframework.stereotype.Repository
-import reactor.kotlin.core.publisher.toMono
 
 @Repository
 class UserProfileRepository(
@@ -19,7 +16,14 @@ class UserProfileRepository(
             .matching(
                 Criteria.where(UserProfile::consumerMobile.name).`is`(mobile)
             ).fetch()
-            .awaitOne()
+            .awaitFirstOrNull()
+    suspend fun findByConsumerIdentifier(identifier: String) =
+        databaseClient.select()
+            .from<UserProfile>()
+            .matching(
+                Criteria.where(UserProfile::identifier.name).`is`(identifier)
+            ).fetch()
+            .awaitFirstOrNull()
     suspend fun findAllUserProfile() =
         databaseClient.select()
             .from<UserProfile>()
@@ -28,4 +32,15 @@ class UserProfileRepository(
             )
             .fetch()
             .all()
+    suspend fun updateUserProfile(userProfile: UserProfile) =
+        databaseClient.update()
+            .table<UserProfile>()
+            .using(userProfile)
+            .fetch()
+            .awaitRowsUpdated()
+    suspend fun insertUserProfile(userProfile: UserProfile) =
+        databaseClient.insert()
+            .into<UserProfile>()
+            .using(userProfile)
+            .await()
 }

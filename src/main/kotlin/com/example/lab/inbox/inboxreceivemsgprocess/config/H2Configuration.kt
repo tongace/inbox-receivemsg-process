@@ -22,7 +22,7 @@ import org.springframework.transaction.reactive.TransactionalOperator
 import java.sql.SQLException
 private typealias H2Options = Map<H2ConnectionOption, String>
 
-@Profile("dev")
+@Profile("test")
 @Configuration
 @EnableR2dbcRepositories
 @EnableTransactionManagement
