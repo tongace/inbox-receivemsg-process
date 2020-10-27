@@ -17,11 +17,12 @@ class POCService(
         private val log = getLogger<TestHandler>()
     }
     suspend fun process(model: MatchingRegisterNewModel){
-        createMatchingData(model)
-        val index = findIndexOrderOfType(model)
-        log.info("index of insert of matching id = ${model.matchingId} : customer id = ${model.customerId} : type = ${model.type} ")
+        val insertedDatas = createMatchingData(model)
+        val meetRequiredType = findMeetTypeRequired(model,insertedDatas)
+        val index = findIndexOrderOfType(model,insertedDatas)
+        log.info("index of insert of matching id = ${model.matchingId} : customer id = ${model.customerId} : type = ${model.type} >>>>> $index and meet required >>> $meetRequiredType" )
     }
-    private suspend fun createMatchingData(model: MatchingRegisterNewModel) {
+    private suspend fun createMatchingData(model: MatchingRegisterNewModel): MutableList<MatchingRegisterNew>? {
         matchingRegisterNewRepository.insertMatchingRegisterNew(
             MatchingRegisterNew(
                 id = null,
@@ -33,16 +34,20 @@ class POCService(
                 createBy = "TEST"
             )
         )
-    }
-    private suspend fun findIndexOrderOfType(model: MatchingRegisterNewModel)=
-        matchingRegisterNewRepository.findByCustomerIdAndMatchingId(
+        return matchingRegisterNewRepository.findByCustomerIdAndMatchingId(
             matchingId = model.matchingId,
             customerId = model.customerId
-        ).collectList()
-            .awaitFirstOrNull()
+        ).collectList().awaitFirstOrNull()
+    }
+    private suspend fun findIndexOrderOfType(model: MatchingRegisterNewModel,insertedData: MutableList<MatchingRegisterNew>?)=
+        insertedData
             ?.indexOfFirst { matchingRegisterNew ->
                 (matchingRegisterNew.customerId == model.customerId
                         && matchingRegisterNew.matchingId == model.matchingId
                         && matchingRegisterNew.type == model.type) && matchingRegisterNew.status
             } ?: -1
+    private suspend fun findMeetTypeRequired(model: MatchingRegisterNewModel,insertedData: MutableList<MatchingRegisterNew>?)=
+        insertedData?.count {
+            matchingRegisterNew -> matchingRegisterNew.type=="DOPA" || matchingRegisterNew.type=="FORM"
+        }==2
 }

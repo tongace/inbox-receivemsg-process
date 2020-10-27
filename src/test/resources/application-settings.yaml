@@ -1,3 +1,0 @@
-redis-config:
-  expire-times:
-    register-cif-Id: 5s

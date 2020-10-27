@@ -39,6 +39,6 @@ class TestHandler(
     }
     suspend fun createMatching(request: ServerRequest) =
         transferResponseSuccess(
-            pocService.process(request.awaitBody<TransferRequest<MatchingRegisterNewModel>>().content)
+            pocService.process(request.awaitBody())
         )
 }
