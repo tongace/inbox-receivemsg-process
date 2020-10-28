@@ -36,7 +36,7 @@ class SendRegisterNewRepository(
                 log.info("Produce: ${KafkaDestinations.PRODUCE_NEW_REGISTER_FACE_REFLECT_BINDER} -> payload: $payload")
             }
     suspend fun sendNewRegisterFaceBasic(payload: FaceBasicModel): Boolean=
-        messageStreamRepository.produceNewRegisterFaceReflect()
+        messageStreamRepository.produceNewRegisterFaceBasic()
             .send(payload.toMessagePayload())
             .also {
                 log.info("Produce: ${KafkaDestinations.PRODUCE_NEW_REGISTER_FACE_BASIC_BINDER} -> payload: $payload")
