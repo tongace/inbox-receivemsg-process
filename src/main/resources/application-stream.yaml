@@ -37,6 +37,42 @@ spring.cloud.stream:
             request.timeout.ms: 15000
             retry.backoff.ms: 250
             retries: 20
+      NewRegisterFormProducer:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      NewRegisterDopaProducer:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      NewRegisterFaceReflectProducer:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      NewRegisterFaceBasicProducer:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
   bindings:
     InboxReceiveMessageConsume:
       destination: test
@@ -53,4 +89,20 @@ spring.cloud.stream:
     InboxReceiveMessageTransformProduce:
       destination: test2
       group: test.topic.group
+      binder: batchKafka
+    NewRegisterFormProducer:
+      destination: paotang.ekyc.fct.register-new-form.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    NewRegisterDopaProducer:
+      destination: paotang.ekyc.fct.register-new-dopa.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    NewRegisterFaceReflectProducer:
+      destination: paotang.ekyc.fct.register-new-face-reflects.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    NewRegisterFaceBasicProducer:
+      destination: paotang.ekyc.fct.register-new-face-basics.0
+      group: ekyc.qualification.process
       binder: batchKafka

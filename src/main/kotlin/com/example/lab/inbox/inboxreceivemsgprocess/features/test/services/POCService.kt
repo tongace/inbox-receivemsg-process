@@ -46,6 +46,8 @@ class POCService(
                         && matchingRegisterNew.matchingId == model.matchingId
                         && matchingRegisterNew.type == model.type) && matchingRegisterNew.status
             } ?: -1
+
+
     private suspend fun findMeetTypeRequired(model: MatchingRegisterNewModel,insertedData: MutableList<MatchingRegisterNew>?)=
         insertedData?.count {
             matchingRegisterNew -> matchingRegisterNew.type=="DOPA" || matchingRegisterNew.type=="FORM"

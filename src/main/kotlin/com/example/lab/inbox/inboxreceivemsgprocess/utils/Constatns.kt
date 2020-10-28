@@ -26,4 +26,8 @@ object KafkaDestinations {
     const val PRODUCE_TEST = "InboxReceiveMessageProduce"
     const val CONSUME_TEST2 = "InboxReceiveMessageTransFormConsume"
     const val PRODUCE_TEST2 = "InboxReceiveMessageTransformProduce"
+    const val PRODUCE_NEW_REGISTER_FORM_BINDER = "NewRegisterFormProducer"
+    const val PRODUCE_NEW_REGISTER_DOPA_BINDER = "NewRegisterDopaProducer"
+    const val PRODUCE_NEW_REGISTER_FACE_REFLECT_BINDER = "NewRegisterFaceReflectProducer"
+    const val PRODUCE_NEW_REGISTER_FACE_BASIC_BINDER = "NewRegisterFaceBasicProducer"
 }
