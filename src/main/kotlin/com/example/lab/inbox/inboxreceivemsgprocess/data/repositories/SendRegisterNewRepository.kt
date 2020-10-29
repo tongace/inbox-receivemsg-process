@@ -4,7 +4,6 @@ import com.example.lab.inbox.inboxreceivemsgprocess.features.qualifications.mode
 import com.example.lab.inbox.inboxreceivemsgprocess.features.qualifications.model.FaceBasicModel
 import com.example.lab.inbox.inboxreceivemsgprocess.features.qualifications.model.FaceReflectModel
 import com.example.lab.inbox.inboxreceivemsgprocess.features.qualifications.model.FormDataModel
-import com.example.lab.inbox.inboxreceivemsgprocess.features.userdata.models.UserModel
 import com.example.lab.inbox.inboxreceivemsgprocess.utils.KafkaDestinations
 import com.example.lab.inbox.inboxreceivemsgprocess.utils.getLogger
 import com.example.lab.inbox.inboxreceivemsgprocess.utils.toMessagePayload
