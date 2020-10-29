@@ -10,34 +10,34 @@ import com.example.lab.inbox.inboxreceivemsgprocess.utils.toMessagePayload
 import org.springframework.stereotype.Repository
 
 @Repository
-class SendRegisterNewRepository(
+class SendChangeDataRepository (
     private val messageStreamRepository: MessageStreamRepository
 ){
     private companion object {
         private val log = getLogger<SendRegisterNewRepository>()
     }
     suspend fun sendForm(payload: FormDataModel): Boolean=
-        messageStreamRepository.produceNewRegisterForm()
+        messageStreamRepository.produceChangeDataForm()
             .send(payload.toMessagePayload())
             .also {
-                log.info("Produce: ${KafkaDestinations.PRODUCE_NEW_REGISTER_FORM_BINDER} -> payload: $payload")
+                log.info("Produce: ${KafkaDestinations.PRODUCE_CHANGE_DATA_FORM_BINDER} -> payload: $payload")
             }
     suspend fun sendDopa(payload: DopaModel): Boolean=
-        messageStreamRepository.produceNewRegisterDopa()
+        messageStreamRepository.produceChangeDataDopa()
             .send(payload.toMessagePayload())
             .also {
-                log.info("Produce: ${KafkaDestinations.PRODUCE_NEW_REGISTER_DOPA_BINDER} -> payload: $payload")
+                log.info("Produce: ${KafkaDestinations.PRODUCE_CHANGE_DATA_DOPA_BINDER} -> payload: $payload")
             }
     suspend fun sendFaceReflect(payload: FaceReflectModel): Boolean=
-        messageStreamRepository.produceNewRegisterFaceReflect()
+        messageStreamRepository.produceChangeDataFaceReflect()
             .send(payload.toMessagePayload())
             .also {
-                log.info("Produce: ${KafkaDestinations.PRODUCE_NEW_REGISTER_FACE_REFLECT_BINDER} -> payload: $payload")
+                log.info("Produce: ${KafkaDestinations.PRODUCE_CHANGE_DATA_FACE_REFLECT_BINDER} -> payload: $payload")
             }
     suspend fun sendFaceBasic(payload: FaceBasicModel): Boolean=
-        messageStreamRepository.produceNewRegisterFaceBasic()
+        messageStreamRepository.produceChangeDataFaceBasic()
             .send(payload.toMessagePayload())
             .also {
-                log.info("Produce: ${KafkaDestinations.PRODUCE_NEW_REGISTER_FACE_BASIC_BINDER} -> payload: $payload")
+                log.info("Produce: ${KafkaDestinations.PRODUCE_CHANGE_DATA_FACE_BASIC_BINDER} -> payload: $payload")
             }
 }

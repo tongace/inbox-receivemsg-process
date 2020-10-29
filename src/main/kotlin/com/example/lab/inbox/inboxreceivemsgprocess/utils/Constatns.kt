@@ -26,8 +26,23 @@ object KafkaDestinations {
     const val PRODUCE_TEST = "InboxReceiveMessageProduce"
     const val CONSUME_TEST2 = "InboxReceiveMessageTransFormConsume"
     const val PRODUCE_TEST2 = "InboxReceiveMessageTransformProduce"
-    const val PRODUCE_NEW_REGISTER_FORM_BINDER = "NewRegisterFormProducer"
-    const val PRODUCE_NEW_REGISTER_DOPA_BINDER = "NewRegisterDopaProducer"
-    const val PRODUCE_NEW_REGISTER_FACE_REFLECT_BINDER = "NewRegisterFaceReflectProducer"
-    const val PRODUCE_NEW_REGISTER_FACE_BASIC_BINDER = "NewRegisterFaceBasicProducer"
+
+    const val PRODUCE_NEW_REGISTER_FORM_BINDER = "NewRegisterFormProduce"
+    const val PRODUCE_NEW_REGISTER_DOPA_BINDER = "NewRegisterDopaProduce"
+    const val PRODUCE_NEW_REGISTER_FACE_REFLECT_BINDER = "NewRegisterFaceReflectProduce"
+    const val PRODUCE_NEW_REGISTER_FACE_BASIC_BINDER = "NewRegisterFaceBasicProduce"
+
+    const val PRODUCE_EXISTING_REGISTER_FORM_BINDER = "ExistingRegisterFormProduce"
+    const val PRODUCE_EXISTING_REGISTER_FACE_REFLECT_BINDER = "ExistingRegisterFaceReflectProduce"
+    const val PRODUCE_EXISTING_REGISTER_FACE_BASIC_BINDER = "ExistingRegisterFaceBasicProduce"
+
+    const val PRODUCE_CHANGE_DATA_FORM_BINDER = "ChangeDataRegisterFormProduce"
+    const val PRODUCE_CHANGE_DATA_DOPA_BINDER = "ChangeDataRegisterDopaProduce"
+    const val PRODUCE_CHANGE_DATA_FACE_REFLECT_BINDER = "ChangeDataRegisterFaceReflectProduce"
+    const val PRODUCE_CHANGE_DATA_FACE_BASIC_BINDER = "ChangeDataRegisterFaceBasicProduce"
+
+    const val PRODUCE_FORGOT_PIN_FORM_BINDER = "ForgetPinFormProduce"
+    const val PRODUCE_FORGOT_PIN_DOPA_BINDER = "ForgetPinDopaProduce"
+    const val PRODUCE_FORGOT_PIN_FACE_REFLECT_BINDER = "ForgetPinFaceReflectProduce"
+    const val PRODUCE_FORGOT_PIN_FACE_BASIC_BINDER = "ForgetPinFaceBasicProduce"
 }

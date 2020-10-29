@@ -37,7 +37,7 @@ spring.cloud.stream:
             request.timeout.ms: 15000
             retry.backoff.ms: 250
             retries: 20
-      NewRegisterFormProducer:
+      NewRegisterFormProduce:
         producer:
           configuration:
             acks: all
@@ -46,7 +46,7 @@ spring.cloud.stream:
             request.timeout.ms: 15000
             retry.backoff.ms: 250
             retries: 20
-      NewRegisterDopaProducer:
+      NewRegisterDopaProduce:
         producer:
           configuration:
             acks: all
@@ -55,7 +55,7 @@ spring.cloud.stream:
             request.timeout.ms: 15000
             retry.backoff.ms: 250
             retries: 20
-      NewRegisterFaceReflectProducer:
+      NewRegisterFaceReflectProduce:
         producer:
           configuration:
             acks: all
@@ -64,7 +64,106 @@ spring.cloud.stream:
             request.timeout.ms: 15000
             retry.backoff.ms: 250
             retries: 20
-      NewRegisterFaceBasicProducer:
+      NewRegisterFaceBasicProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ExistingRegisterFormProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ExistingRegisterFaceReflectProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ExistingRegisterFaceBasicProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ChangeDataRegisterFormProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ChangeDataRegisterDopaProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ChangeDataRegisterFaceReflectProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ChangeDataRegisterFaceBasicProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ForgetPinFormProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ForgetPinDopaProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ForgetPinFaceReflectProduce:
+        producer:
+          configuration:
+            acks: all
+            delivery.timeout.ms: 15000
+            max.block.ms: 15000
+            request.timeout.ms: 15000
+            retry.backoff.ms: 250
+            retries: 20
+      ForgetPinFaceBasicProduce:
         producer:
           configuration:
             acks: all
@@ -90,19 +189,63 @@ spring.cloud.stream:
       destination: test2
       group: test.topic.group
       binder: batchKafka
-    NewRegisterFormProducer:
+    NewRegisterFormProduce:
       destination: paotang.ekyc.fct.register-new-form.0
       group: ekyc.qualification.process
       binder: batchKafka
-    NewRegisterDopaProducer:
+    NewRegisterDopaProduce:
       destination: paotang.ekyc.fct.register-new-dopa.0
       group: ekyc.qualification.process
       binder: batchKafka
-    NewRegisterFaceReflectProducer:
+    NewRegisterFaceReflectProduce:
       destination: paotang.ekyc.fct.register-new-face-reflects.0
       group: ekyc.qualification.process
       binder: batchKafka
-    NewRegisterFaceBasicProducer:
+    NewRegisterFaceBasicProduce:
       destination: paotang.ekyc.fct.register-new-face-basics.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ExistingRegisterFormProduce:
+      destination: paotang.ekyc.fct.register-existing-form.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ExistingRegisterFaceReflectProduce:
+      destination: paotang.ekyc.fct.register-existing-face-reflects.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ExistingRegisterFaceBasicProduce:
+      destination: paotang.ekyc.fct.register-existing-face-basics.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ChangeDataRegisterFormProduce:
+      destination: paotang.ekyc.fct.register-change-data-form.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ChangeDataRegisterDopaProduce:
+      destination: paotang.ekyc.fct.register-change-data-dopa.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ChangeDataRegisterFaceReflectProduce:
+      destination: paotang.ekyc.fct.register-change-data-face-reflects.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ChangeDataRegisterFaceBasicProduce:
+      destination: paotang.ekyc.fct.register-change-data-face-basics.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ForgetPinFormProduce:
+      destination: paotang.ekyc.fct.forget-pin-form.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ForgetPinDopaProduce:
+      destination: paotang.ekyc.fct.forget-pin-dopa.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ForgetPinFaceReflectProduce:
+      destination: paotang.ekyc.fct.forget-pin-face-reflects.0
+      group: ekyc.qualification.process
+      binder: batchKafka
+    ForgetPinFaceBasicProduce:
+      destination: paotang.ekyc.fct.forget-pin-face-basics.0
       group: ekyc.qualification.process
       binder: batchKafka
