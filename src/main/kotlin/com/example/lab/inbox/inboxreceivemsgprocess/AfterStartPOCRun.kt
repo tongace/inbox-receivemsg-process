@@ -1,22 +1,28 @@
 package com.example.lab.inbox.inboxreceivemsgprocess
 
-import com.example.lab.inbox.inboxreceivemsgprocess.features.test.services.POCService
-import com.example.lab.inbox.inboxreceivemsgprocess.features.userdata.models.MatchingRegisterNewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.example.lab.inbox.inboxreceivemsgprocess.data.repositories.UserProfileRepository
 import kotlinx.coroutines.runBlocking
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
 
-//@Component
+@Component
 class AfterStartPOCRun(
-    private val pocService: POCService
+//    private val pocService: POCService
+    private val userProfileRepository: UserProfileRepository
 ) {
 
-//    @EventListener(ApplicationReadyEvent::class)
-    fun doSomethingAfterStartup() =runBlocking{
+    @EventListener(ApplicationReadyEvent::class)
+    fun doSomethingAfterStartup() = runBlocking {
+        userProfileRepository.findByConsumerMobileNumber("0872276122")
+            ?.let {
+                userProfileRepository.updateUserProfileByMobileNo(
+                    it.copy(
+                        consumerNameTh = "แขรัศมิ์"
+                    )
+                )
+            }
 //        launch {
 //            pocService.process(
 //                MatchingRegisterNewModel(
@@ -57,5 +63,6 @@ class AfterStartPOCRun(
 //                )
 //            )
 //        }
+
     }
 }

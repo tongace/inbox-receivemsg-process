@@ -1,10 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.3.4.RELEASE"
+	id("org.springframework.boot") version "2.3.5.RELEASE"
 	id("io.spring.dependency-management") version "1.0.10.RELEASE"
-	kotlin("jvm") version "1.3.72"
-	kotlin("plugin.spring") version "1.3.72"
+	kotlin("jvm") version "1.4.10"
+	kotlin("plugin.spring") version "1.4.10"
 }
 
 group = "com.example.lab.inbox"
@@ -17,7 +17,7 @@ repositories {
 
 object Versions {
 	const val springCloud = "Hoxton.RELEASE"
-	const val r2dbc = "Arabba-SR5"
+	const val r2dbc = "Arabba-SR8"
 	const val springDataR2dbc = "1.1.1.RELEASE"
 	const val logback = "6.4"
 	const val springMockK = "2.0.0"
@@ -55,7 +55,6 @@ dependencies {
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("io.mockk:mockk:${Versions.mockkVersion}")
 	implementation("net.logstash.logback:logstash-logback-encoder:${Versions.logback}")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 tasks.withType<Test> {
@@ -64,7 +63,12 @@ tasks.withType<Test> {
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
+		freeCompilerArgs = listOf(
+			"-Xjsr305=strict",
+			"-Xjvm-default=enable",
+			"-Xinline-classes",
+			"-XXLanguage:-NewInference"
+		)
 		jvmTarget = "11"
 	}
 }

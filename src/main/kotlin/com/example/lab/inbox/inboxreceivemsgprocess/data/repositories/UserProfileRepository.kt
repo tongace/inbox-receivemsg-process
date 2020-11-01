@@ -5,6 +5,7 @@ import org.springframework.data.domain.Sort
 import org.springframework.data.r2dbc.core.*
 import org.springframework.data.relational.core.query.Criteria
 import org.springframework.stereotype.Repository
+import kotlin.reflect.full.instanceParameter
 
 @Repository
 class UserProfileRepository(
@@ -43,4 +44,14 @@ class UserProfileRepository(
             .into<UserProfile>()
             .using(userProfile)
             .await()
+
+    suspend fun updateUserProfileByMobileNo(userProfile: UserProfile) =
+        databaseClient.update()
+            .table<UserProfile>()
+            .using(userProfile)
+            .matching(
+                Criteria.where("CONSUMER_MOBILE").`is`(userProfile.consumerMobile)
+            )
+            .fetch()
+            .awaitRowsUpdated()
 }
