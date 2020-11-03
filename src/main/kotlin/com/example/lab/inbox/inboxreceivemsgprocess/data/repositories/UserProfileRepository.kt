@@ -3,14 +3,17 @@ package com.example.lab.inbox.inboxreceivemsgprocess.data.repositories
 import com.example.lab.inbox.inboxreceivemsgprocess.data.entities.UserProfile
 import org.springframework.data.domain.Sort
 import org.springframework.data.r2dbc.core.*
+import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.query.Criteria
 import org.springframework.stereotype.Repository
+import kotlin.reflect.KClass
+import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.instanceParameter
 
 @Repository
 class UserProfileRepository(
-    private val databaseClient:DatabaseClient
-){
+    private val databaseClient: DatabaseClient
+) {
     suspend fun findByConsumerMobileNumber(mobile: String) =
         databaseClient.select()
             .from<UserProfile>()
@@ -18,6 +21,7 @@ class UserProfileRepository(
                 Criteria.where(UserProfile::consumerMobile.name).`is`(mobile)
             ).fetch()
             .awaitFirstOrNull()
+
     suspend fun findByConsumerIdentifier(identifier: String) =
         databaseClient.select()
             .from<UserProfile>()
@@ -25,6 +29,7 @@ class UserProfileRepository(
                 Criteria.where(UserProfile::identifier.name).`is`(identifier)
             ).fetch()
             .awaitFirstOrNull()
+
     suspend fun findAllUserProfile() =
         databaseClient.select()
             .from<UserProfile>()
@@ -33,12 +38,14 @@ class UserProfileRepository(
             )
             .fetch()
             .all()
+
     suspend fun updateUserProfile(userProfile: UserProfile) =
         databaseClient.update()
             .table<UserProfile>()
             .using(userProfile)
             .fetch()
             .awaitRowsUpdated()
+
     suspend fun insertUserProfile(userProfile: UserProfile) =
         databaseClient.insert()
             .into<UserProfile>()
@@ -54,4 +61,5 @@ class UserProfileRepository(
             )
             .fetch()
             .awaitRowsUpdated()
+
 }

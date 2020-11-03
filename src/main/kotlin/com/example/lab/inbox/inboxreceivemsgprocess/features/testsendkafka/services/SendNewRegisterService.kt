@@ -25,7 +25,7 @@ class SendNewRegisterService (
                     customerId= "1603861015436469385966",
                     matchingId="NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
                     description="Success",
-                    code ="9999",
+                    code ="0000",
                     dopaData = DopaData(
                         code = 0,
                         status = "ปกติ"

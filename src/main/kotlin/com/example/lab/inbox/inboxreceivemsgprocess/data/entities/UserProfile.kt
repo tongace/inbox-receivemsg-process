@@ -1,6 +1,5 @@
 package com.example.lab.inbox.inboxreceivemsgprocess.data.entities
 
-import jdk.jfr.Name
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table

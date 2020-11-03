@@ -1,16 +1,17 @@
 package com.example.lab.inbox.inboxreceivemsgprocess.features.testsendkafka.services
 
+import com.example.lab.inbox.inboxreceivemsgprocess.data.repositories.SendForgotPinRepository
 import com.example.lab.inbox.inboxreceivemsgprocess.data.repositories.SendRegisterNewRepository
 import com.example.lab.inbox.inboxreceivemsgprocess.features.qualifications.model.*
 import org.springframework.stereotype.Service
 
 @Service
 class SendForgotPinService (
-    private val sendRegisterNewRepository: SendRegisterNewRepository
+    private val sendForgotPinRepository: SendForgotPinRepository
 ){
     suspend fun send() {
         kotlin.run {
-            sendRegisterNewRepository.sendForm(
+            sendForgotPinRepository.sendForm(
                 FormDataModel(
                     customerId= "1603861015436469385966",
                     desc = "New Registration Form is valid.",
@@ -20,12 +21,12 @@ class SendForgotPinService (
             )
         }
         kotlin.run {
-            sendRegisterNewRepository.sendDopa(
+            sendForgotPinRepository.sendDopa(
                 DopaModel(
                     customerId= "1603861015436469385966",
                     matchingId="NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
                     description="Success",
-                    code ="9999",
+                    code ="0000",
                     dopaData = DopaData(
                         code = 0,
                         status = "ปกติ"
@@ -34,7 +35,7 @@ class SendForgotPinService (
             )
         }
         kotlin.run {
-            sendRegisterNewRepository.sendFaceReflect(
+            sendForgotPinRepository.sendFaceReflect(
                 FaceReflectModel(
                     customerId= "1603861015436469385966",
                     matchingId="NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
@@ -51,7 +52,7 @@ class SendForgotPinService (
             )
         }
         kotlin.run {
-            sendRegisterNewRepository.sendFaceBasic(
+            sendForgotPinRepository.sendFaceBasic(
                 FaceBasicModel(
                     customerId= "1603861015436469385966",
                     matchingId="NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",

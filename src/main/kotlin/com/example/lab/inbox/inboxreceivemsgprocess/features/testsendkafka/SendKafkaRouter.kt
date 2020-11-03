@@ -15,7 +15,7 @@ class SendKafkaRouter{
             GET("/new",sendHandler::sendRegisterNew)
             GET("/existing",sendHandler::sendRegisterExisting)
             GET("/change",sendHandler::sendChangeData)
-            POST("/forgot",sendHandler::sendForgotPin)
+            GET("/forgot",sendHandler::sendForgotPin)
         }
     }
 }
