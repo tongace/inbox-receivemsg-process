@@ -113,6 +113,4 @@ fun <T : Any> T.toMessagePayload() = this.let {
         )
 }
 
-data class PaotangSystemException(var statusDesc: String) : RuntimeException()
-
-data class KafkaRetryAbleException(var statusDesc: String) : RuntimeException()
+data class ExampleSystemException(var statusDesc: String) : RuntimeException()
