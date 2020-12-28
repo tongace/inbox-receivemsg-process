@@ -19,6 +19,15 @@ object Constants {
     const val IS_ACTIVE = "Y"
     const val TOKEN_ENABLE = "Y"
     const val DISABLE = "N"
+
+    const val TYPE_FORM = "FORM"
+    const val TYPE_DOPA = "DOPA"
+    const val TYPE_FACE_BASIC = "FACB"
+    const val TYPE_FACE_REFLECT = "FACR"
+    const val FLOW_NEW_REGISTER = "NEW_REGISTER"
+    const val FLOW_EXISTING_REGISTER="EXISTING_REGISTER"
+    const val FLOW_CHANGE_DATA="CHANGE_DATA"
+    const val FLOW_FORGET_PIN="FORGET_PIN"
 }
 
 object KafkaDestinations {

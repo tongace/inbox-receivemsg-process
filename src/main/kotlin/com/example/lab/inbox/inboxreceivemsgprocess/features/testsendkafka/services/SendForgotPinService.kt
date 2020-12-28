@@ -1,7 +1,6 @@
 package com.example.lab.inbox.inboxreceivemsgprocess.features.testsendkafka.services
 
 import com.example.lab.inbox.inboxreceivemsgprocess.data.repositories.SendForgotPinRepository
-import com.example.lab.inbox.inboxreceivemsgprocess.data.repositories.SendRegisterNewRepository
 import com.example.lab.inbox.inboxreceivemsgprocess.features.qualifications.model.*
 import org.springframework.stereotype.Service
 
@@ -13,9 +12,9 @@ class SendForgotPinService (
         kotlin.run {
             sendForgotPinRepository.sendForm(
                 FormDataModel(
-                    customerId= "1603861015436469385966",
+                    customerId= "NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
                     desc = "New Registration Form is valid.",
-                    matchingId="NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
+                    matchingId="1603861015436469385966",
                     result=true
                 )
             )
@@ -23,8 +22,8 @@ class SendForgotPinService (
         kotlin.run {
             sendForgotPinRepository.sendDopa(
                 DopaModel(
-                    customerId= "1603861015436469385966",
-                    matchingId="NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
+                    customerId= "NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
+                    matchingId="1603861015436469385966",
                     description="Success",
                     code ="0000",
                     dopaData = DopaData(
@@ -37,8 +36,8 @@ class SendForgotPinService (
         kotlin.run {
             sendForgotPinRepository.sendFaceReflect(
                 FaceReflectModel(
-                    customerId= "1603861015436469385966",
-                    matchingId="NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
+                    customerId= "NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
+                    matchingId="1603861015436469385966",
                     faceReflectsData = FaceReflectsData(
                         code = "0000",
                         confidence= 0,
@@ -54,8 +53,8 @@ class SendForgotPinService (
         kotlin.run {
             sendForgotPinRepository.sendFaceBasic(
                 FaceBasicModel(
-                    customerId= "1603861015436469385966",
-                    matchingId="NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
+                    customerId= "NTc2bmd5dFZiVDZZTW1xNkpYbGlOMlU0dXlTM1h3aWowMGFoV3FCa3Ayaz0=",
+                    matchingId="1603861015436469385966",
                     faceBasicsData = FaceBasicsData(
                         code = "0000",
                         confidence= 0,
