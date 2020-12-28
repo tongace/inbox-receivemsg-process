@@ -1,4 +1,4 @@
-package com.example.lab.inbox.inboxreceivemsgprocess.data.entities
+package com.example.lab.inbox.inboxreceivemsgprocess.data.database.entities
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column

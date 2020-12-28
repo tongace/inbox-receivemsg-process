@@ -1,4 +1,4 @@
-package com.example.lab.inbox.inboxreceivemsgprocess.data.entities
+package com.example.lab.inbox.inboxreceivemsgprocess.data.redis.entities
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.fasterxml.jackson.databind.annotation.JsonSerialize

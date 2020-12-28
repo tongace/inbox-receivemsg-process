@@ -25,9 +25,9 @@ object Constants {
     const val TYPE_FACE_BASIC = "FACB"
     const val TYPE_FACE_REFLECT = "FACR"
     const val FLOW_NEW_REGISTER = "NEW_REGISTER"
-    const val FLOW_EXISTING_REGISTER="EXISTING_REGISTER"
-    const val FLOW_CHANGE_DATA="CHANGE_DATA"
-    const val FLOW_FORGET_PIN="FORGET_PIN"
+    const val FLOW_EXISTING_REGISTER = "EXISTING_REGISTER"
+    const val FLOW_CHANGE_DATA = "CHANGE_DATA"
+    const val FLOW_FORGET_PIN = "FORGET_PIN"
 }
 
 object KafkaDestinations {
@@ -54,4 +54,9 @@ object KafkaDestinations {
     const val PRODUCE_FORGOT_PIN_DOPA_BINDER = "ForgetPinDopaProduce"
     const val PRODUCE_FORGOT_PIN_FACE_REFLECT_BINDER = "ForgetPinFaceReflectProduce"
     const val PRODUCE_FORGOT_PIN_FACE_BASIC_BINDER = "ForgetPinFaceBasicProduce"
+}
+
+object ErrorCode {
+    const val INVALID_REQUEST = "OBD0001"
+    const val SYSTEM_ERROR = "OBD9999"
 }

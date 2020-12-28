@@ -1,4 +1,4 @@
-package com.example.lab.inbox.inboxreceivemsgprocess.data.config
+package com.example.lab.inbox.inboxreceivemsgprocess.data.redis.config
 
 object RedisKeyBuilder {
 

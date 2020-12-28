@@ -1,14 +1,10 @@
-package com.example.lab.inbox.inboxreceivemsgprocess.data.repositories
+package com.example.lab.inbox.inboxreceivemsgprocess.data.database.repositories
 
-import com.example.lab.inbox.inboxreceivemsgprocess.data.entities.UserProfile
+import com.example.lab.inbox.inboxreceivemsgprocess.data.database.entities.UserProfile
 import org.springframework.data.domain.Sort
 import org.springframework.data.r2dbc.core.*
-import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.query.Criteria
 import org.springframework.stereotype.Repository
-import kotlin.reflect.KClass
-import kotlin.reflect.full.findAnnotation
-import kotlin.reflect.full.instanceParameter
 
 @Repository
 class UserProfileRepository(

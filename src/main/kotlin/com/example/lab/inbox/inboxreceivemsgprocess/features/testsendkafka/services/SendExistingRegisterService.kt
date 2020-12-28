@@ -1,7 +1,7 @@
 package com.example.lab.inbox.inboxreceivemsgprocess.features.testsendkafka.services
 
-import com.example.lab.inbox.inboxreceivemsgprocess.data.repositories.SendRegisterExistingRepository
-import com.example.lab.inbox.inboxreceivemsgprocess.features.qualifications.model.*
+import com.example.lab.inbox.inboxreceivemsgprocess.data.kafka.entities.*
+import com.example.lab.inbox.inboxreceivemsgprocess.data.kafka.repositories.SendRegisterExistingRepository
 import org.springframework.stereotype.Service
 
 @Service

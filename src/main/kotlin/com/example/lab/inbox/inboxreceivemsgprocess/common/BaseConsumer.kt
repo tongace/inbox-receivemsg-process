@@ -1,36 +1,39 @@
 package com.example.lab.inbox.inboxreceivemsgprocess.common
 
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.example.lab.inbox.inboxreceivemsgprocess.utils.KafkaRetryAbleException
-import com.example.lab.inbox.inboxreceivemsgprocess.utils.PaotangSystemException
-import com.example.lab.inbox.inboxreceivemsgprocess.utils.getLogger
+import com.example.lab.inbox.inboxreceivemsgprocess.exceptions.NonRetryKafkaMessageException
+import com.example.lab.inbox.inboxreceivemsgprocess.exceptions.RetryKafkaMessageException
+import com.example.lab.inbox.inboxreceivemsgprocess.utils.GenerateUtil.generateStreamMsgRefId
+import com.example.lab.inbox.inboxreceivemsgprocess.utils.GenerateUtil.generateUUID
+import com.example.lab.inbox.inboxreceivemsgprocess.utils.LoggerDelegate
 import kotlinx.coroutines.runBlocking
 
 open class BaseConsumer {
 
     private companion object {
-        private val log = getLogger<BaseConsumer>()
+        private val log by LoggerDelegate()
     }
 
-    fun <T, R> processConsumer(
+    fun <T> processConsumer(
         topicNameBinder: String,
         payload: T,
-        process: suspend (T) -> R
-    ): R? {
-        log.info("$topicNameBinder : ${jacksonObjectMapper().writeValueAsString(payload)}")
-        return try {
+        referenceProcessId: String? = null,
+        process: suspend (T) -> Unit
+    ) {
+        val refId = generateStreamMsgRefId(referenceProcessId ?: generateUUID())
+        log.info("$topicNameBinder : $payload RefProcessId: $refId")
+        try {
             runBlocking {
-                return@runBlocking process(payload)
+                process(payload)
+                log.info("$topicNameBinder : RefProcessId: $refId Process done and committed")
             }
-        } catch (ex: KafkaRetryAbleException) {
-            log.error("KafkaRetryAbleException from $topicNameBinder caused: ${ex.statusDesc}")
+        } catch (ex: NonRetryKafkaMessageException) {
+            log.warn("NonRetryKafkaMessageException from $topicNameBinder caused: ${ex.message} | RefProcessId: $refId is committed")
+        } catch (ex: RetryKafkaMessageException) {
+            log.error("RetryKafkaMessageException from $topicNameBinder caused: ${ex.message} | RefProcessId: $refId uncommitted")
             throw ex
-        } catch (ex: PaotangSystemException) {
-            log.error("PaotangSystemException from $topicNameBinder caused: ${ex.statusDesc}")
-            return null
         } catch (ex: Exception) {
-            log.error("Exception from $topicNameBinder caused: ${ex.message}")
-            return null
+            log.error("Exception from $topicNameBinder caused: ${ex.message} | RefProcessId: $refId")
+            throw ex
         }
     }
 }

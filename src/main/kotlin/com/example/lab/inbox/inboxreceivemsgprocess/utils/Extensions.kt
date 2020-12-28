@@ -18,43 +18,29 @@ import java.math.BigDecimal
 import java.time.Instant
 import java.time.LocalDateTime
 import java.util.*
+import kotlin.properties.ReadOnlyProperty
+import kotlin.reflect.KProperty
+import kotlin.reflect.full.companionObject
 
-inline fun <reified T : Any> getLogger(): Logger = LoggerFactory.getLogger(T::class.java)
-
-inline fun <T : Any> T?.ifNull(func: () -> Unit) {
-    if (this == null) func()
+class LoggerDelegate<in R : Any> : ReadOnlyProperty<R, Logger> {
+    override fun getValue(thisRef: R, property: KProperty<*>): Logger =
+        LoggerFactory.getLogger(getClassForLogging(thisRef.javaClass))
 }
 
-inline fun Boolean.ifIsFalse(func: () -> Unit) {
-    if (!this) func()
+fun <T : Any> getClassForLogging(javaClass: Class<T>): Class<*> {
+    return javaClass.enclosingClass?.takeIf {
+        it.kotlin.companionObject?.java == javaClass
+    } ?: javaClass
 }
 
-inline fun Boolean.ifIsTrue(func: () -> Unit) {
-    if (this) func()
-}
 
-fun Map<*, *>?.getStringOrDefault(key: String, defaultValue: String) =
-    this?.getOrDefault(key, defaultValue)?.toString() ?: defaultValue
 
-fun String?.stringDefault(defaultValue: String): String =
-    if (this.isNullOrEmpty()) defaultValue else this
-
-inline fun String?.ifNotNullAndNotEmpty(block: (String) -> Unit) {
-    val notNull = this ?: ""
-    if (notNull.isNotEmpty()) {
-        block(notNull)
-    }
-}
-
-fun String?.isNotNullAndNotBlank() = !this.isNullOrBlank()
 
 inline fun <reified T : Any> String?.mapJsonStringTo(crossinline block: (T) -> Unit): T {
     val clazz = jacksonObjectMapper().readValue(this, T::class.java)
     block(clazz)
     return clazz
 }
-
-fun BigDecimal?.orZero(): BigDecimal = this ?: BigDecimal.ZERO
 
 inline fun <T : Any> ObjectNode.mapObjectNodeTo(mapper: (ObjectNode) -> T): T = mapper(this)
 

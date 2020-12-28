@@ -1,7 +1,7 @@
-package com.example.lab.inbox.inboxreceivemsgprocess.data.repositories
+package com.example.lab.inbox.inboxreceivemsgprocess.data.redis.repositories
 
-import com.example.lab.inbox.inboxreceivemsgprocess.data.config.*
-import com.example.lab.inbox.inboxreceivemsgprocess.data.entities.MatchingRegisterInfo
+import com.example.lab.inbox.inboxreceivemsgprocess.data.redis.config.*
+import com.example.lab.inbox.inboxreceivemsgprocess.data.redis.entities.MatchingRegisterInfo
 import com.example.lab.inbox.inboxreceivemsgprocess.properties.RedisConfigProperty
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory
 import org.springframework.stereotype.Repository
@@ -91,7 +91,7 @@ class MatchingRegisterRepository(
         matchingRegsiterInfoTemplate.removeByKey(
             RedisKeyBuilder.buildRegisterQualifyMatchingKey(
                 flowType,
-                matchingId,
+                matchingId
             )
         )
         matchingRegsiterInfoTemplate.removeByKey(

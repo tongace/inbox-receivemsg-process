@@ -1,9 +1,0 @@
-kind: Endpoints
-apiVersion: v1
-metadata:
-  name: kafka
-subsets:
-  - addresses:
-      - ip: localhost
-    ports:
-      - port: 9092

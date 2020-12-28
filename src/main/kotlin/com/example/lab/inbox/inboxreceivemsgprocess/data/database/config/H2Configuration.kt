@@ -1,4 +1,4 @@
-package com.example.lab.inbox.inboxreceivemsgprocess.config
+package com.example.lab.inbox.inboxreceivemsgprocess.data.database.config
 
 import com.example.lab.inbox.inboxreceivemsgprocess.utils.Constants
 import io.r2dbc.h2.H2ConnectionFactory

@@ -1,9 +1,0 @@
-kind: Endpoints
-apiVersion: v1
-metadata:
-  name: zookeeper
-subsets:
-  - addresses:
-      - ip: localhost
-    ports:
-      - port: 2181

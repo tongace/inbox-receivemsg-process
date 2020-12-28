@@ -1,4 +1,4 @@
-package com.example.lab.inbox.inboxreceivemsgprocess.data.repositories
+package com.example.lab.inbox.inboxreceivemsgprocess.data.kafka.config
 
 import com.example.lab.inbox.inboxreceivemsgprocess.utils.KafkaDestinations.CONSUME_TEST
 import com.example.lab.inbox.inboxreceivemsgprocess.utils.KafkaDestinations.CONSUME_TEST2
@@ -23,7 +23,7 @@ import org.springframework.cloud.stream.annotation.Input
 import org.springframework.cloud.stream.annotation.Output
 import org.springframework.messaging.SubscribableChannel
 
-interface MessageStreamRepository {
+interface MessageStreamRepo {
     @Output(PRODUCE_TEST)
     fun produceUserProfileResult(): SubscribableChannel
     @Output(PRODUCE_TEST2)

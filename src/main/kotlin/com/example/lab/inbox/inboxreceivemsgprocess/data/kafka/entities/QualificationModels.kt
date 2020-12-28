@@ -1,4 +1,4 @@
-package com.example.lab.inbox.inboxreceivemsgprocess.features.qualifications.model
+package com.example.lab.inbox.inboxreceivemsgprocess.data.kafka.entities
 
 data class FormDataModel(
     val customerId: String,

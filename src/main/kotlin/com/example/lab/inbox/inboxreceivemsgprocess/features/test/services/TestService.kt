@@ -1,8 +1,7 @@
 package com.example.lab.inbox.inboxreceivemsgprocess.features.test.services
 
-import com.example.lab.inbox.inboxreceivemsgprocess.data.entities.UserProfile
-import com.example.lab.inbox.inboxreceivemsgprocess.data.repositories.UserProfileRepository
-import kotlinx.coroutines.coroutineScope
+import com.example.lab.inbox.inboxreceivemsgprocess.data.database.entities.UserProfile
+import com.example.lab.inbox.inboxreceivemsgprocess.data.database.repositories.UserProfileRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.reactive.awaitFirstOrNull
 import org.springframework.stereotype.Service
